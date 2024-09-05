@@ -1,10 +1,13 @@
-# 🚀 Getting started with Strapi
+# Open Repository for strapi-plugin-translate
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+Manage and automate the translation of content fields for free. 500000 characters/month in free tier.
 
-### `develop`
+## 🚀 Tech Stack
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+- [strapi](https://www.npmjs.com/package/@strapi/strapi) | Open-source headless CMS
+- [@strapi/plugin-i18n](https://www.npmjs.com/package/strapi-plugin-translate) | Strapi v4 - i18n
+- [strapi-plugin-translate](https://www.npmjs.com/package/strapi-plugin-translate) | Strapi v4 - Translate plugin
+- [strapi-provider-translate-deepl](https://www.npmjs.com/package/strapi-plugin-translate) | Strapi v4 - DeepL provider for Translate Plugin
 
 ```
 npm run develop
@@ -12,50 +15,67 @@ npm run develop
 yarn develop
 ```
 
-### `start`
+## 📭 Requirements
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+- Free DeepL API key, at [deepl](www.deepl.com/pro#developer)
+- Duplicate the .env.example and rename it to .env
+- Modify Keys and add your DeepL Key
 
-```
-npm run start
-# or
-yarn start
-```
+## ⏳ Installation
 
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
-```
-npm run build
-# or
-yarn build
+```bash
+# with npm
+$ npm install
+# or with yarn
+$ yarn
 ```
 
-## ⚙️ Deployment
+After successful installation you have to build a fresh package that includes plugin UI:
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
-
+```bash
+# with npm
+$ npm run build && npm run develop
+# or with yarn
+$ yarn build && yarn develop
 ```
-yarn strapi deploy
+
+## ⚙ Configuration
+
+### plugin.js
+
+`config/plugin.js`
+
+```js
+module.exports = ({ env }) => ({
+  translate: {
+    enabled: true,
+    config: {
+      // Add the name of your provider here (for example 'deepl' for strapi-provider-translate-deepl or the full package name)
+      provider: "deepl",
+      providerOptions: {
+        apiKey: env("DEEPL_API_KEY"),
+      },
+      // Which field types are translated (default string, text, richtext, components and dynamiczones)
+      // Either string or object with type and format
+      // Possible formats: plain, markdown, html (default plain)
+      translatedFieldTypes: [
+        "string",
+        { type: "text", format: "plain" },
+        { type: "richtext", format: "markdown" },
+        "component",
+        "dynamiczone",
+      ],
+      // If relations should be translated (default true)
+      translateRelations: true,
+    },
+  },
+});
 ```
 
-## 📚 Learn more
+Find more options at [strapi-plugin-translate](https://www.npmjs.com/package/strapi-plugin-translate) and [strapi-provider-translate-deepl](https://www.npmjs.com/package/strapi-plugin-translate).
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+### app.js
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+`src/admin/app.js`
 
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
-
----
-
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+- comment out the languages you want to use
