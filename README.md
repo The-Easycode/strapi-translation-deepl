@@ -73,3 +73,36 @@ Find more options at [strapi-plugin-translate](https://www.npmjs.com/package/str
 `src/admin/app.js`
 
 - comment out the languages you want to use
+
+```js
+  //...
+  locales: [
+    // 'ar',
+    // 'fr',
+    // 'cs',
+    "de",
+    // 'dk',
+    // 'es',
+    // 'he',
+    // 'id',
+    // 'it',
+    // 'ja',
+    // 'ko',
+    // 'ms',
+    // 'nl',
+    // 'no',
+    // 'pl',
+    // 'pt-BR',
+    // 'pt',
+    // 'ru',
+    // 'sk',
+    // 'sv',
+    // 'th',
+    // 'tr',
+    // 'uk',
+    // 'vi',
+    // 'zh-Hans',
+    // 'zh',
+  ],
+  //...
+```
