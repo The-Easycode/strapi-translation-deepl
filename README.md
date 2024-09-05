@@ -9,12 +9,6 @@ Manage and automate the translation of content fields for free. 500000 character
 - [strapi-plugin-translate](https://www.npmjs.com/package/strapi-plugin-translate) | Strapi v4 - Translate plugin
 - [strapi-provider-translate-deepl](https://www.npmjs.com/package/strapi-plugin-translate) | Strapi v4 - DeepL provider for Translate Plugin
 
-```
-npm run develop
-# or
-yarn develop
-```
-
 ## 📭 Requirements
 
 - Free DeepL API key, at [deepl](www.deepl.com/pro#developer)
