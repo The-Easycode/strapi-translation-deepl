@@ -1,4 +1,8 @@
-# Open Repository for strapi-plugin-translate
+<div align="center">
+  <h1>Strapi v4 - pen Repository for strapi-plugin-translate</h1>
+</div>
+
+![repository showcase](https://github.com/The-Easycode/strapi-translation-deepl/blob/master/translation.gif)
 
 Manage and automate the translation of content fields for free. 500000 characters/month in free tier.
 
