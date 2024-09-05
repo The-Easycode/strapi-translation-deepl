@@ -12,7 +12,7 @@ Manage and automate the translation of content fields for free. 500000 character
 ## 📭 Requirements
 
 - Free DeepL API key, at [deepl](www.deepl.com/pro#developer)
-- Duplicate the .env.example and rename it to .env
+- Duplicate the `.env.example` and rename it to `.env`
 - Modify Keys and add your DeepL Key
 
 ## ⏳ Installation
